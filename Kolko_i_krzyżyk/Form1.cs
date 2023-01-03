@@ -12,12 +12,56 @@ namespace Kolko_i_krzyżyk
 {
     public partial class Form1 : Form
     {
+        private bool czyj_ruch = true; //true = X, false = O
         public Form1()
         {
             InitializeComponent();
         }
 
         //Co ma się dziać po kliknięciu (któregokolwiek z przycisków)
+
+        private void WstawZnak(object przycisk)
+        {
+            //rzutowanie 
+            Button wcisnietyPrzycisk = (Button)przycisk;
+
+            if (czyj_ruch)
+            {
+                wcisnietyPrzycisk.Text = "X";
+            }
+            else
+            {
+                wcisnietyPrzycisk.Text = "O";
+            }
+            //uniemożliwienie ponownego kliknięcia przycisku
+            wcisnietyPrzycisk.Enabled = false;
+
+            bool wynik = SprawdzCzyKtosWygral();
+            if (wynik)
+            {
+                string tekstWygranej;
+                if (czyj_ruch)
+                {
+                    tekstWygranej = "Wygrał Gracz X! Rozpocząć jeszcze raz?";
+                }
+                else
+                {
+                    tekstWygranej = "Wygrał Gracz O! Rozpocząć jeszcze raz?";
+                }
+                MessageBox.Show(tekstWygranej, "Wygrana");
+                WlaczWszystkiePrzyciskiIResetuj();
+            }
+            czyj_ruch = !czyj_ruch;
+            if (czyj_ruch)
+            {
+                label2.Text = "X";
+            }
+            else
+            {
+                label2.Text = "O";
+            }
+
+        }
 
         //włącz wszytskie przyciski + wyczyść z nich tekst
         private void WlaczWszystkiePrzyciskiIResetuj()
@@ -103,5 +147,50 @@ namespace Kolko_i_krzyżyk
         }
 
         //metody dla przycisków
+        private void btn1_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender);
+        }
+
+        private void btn2_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender);
+        }
+
+        private void btn3_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender);
+        }
+
+        private void btn4_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender);
+        }
+
+        private void btn5_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender);
+        }
+
+        private void btn6_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender);
+        }
+
+        private void btn7_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender);
+        }
+
+        private void btn8_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender);
+        }
+
+        private void btn9_Click(object sender, EventArgs e)
+        {
+            WstawZnak(sender); 
+        }
     }
+
 }
